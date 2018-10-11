@@ -1,0 +1,2 @@
+# ionicBarcode
+sample barcode app
