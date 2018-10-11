@@ -1,14 +1,27 @@
-import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { Component } from "@angular/core";
+import { NavController } from "ionic-angular";
+import { BarcodeScanner } from "@ionic-native/barcode-scanner";
 
 @Component({
-  selector: 'page-home',
-  templateUrl: 'home.html'
+  selector: "page-home",
+  templateUrl: "home.html"
 })
 export class HomePage {
+  barcodedata: any="place to show barcode data";
+  constructor(
+    public navCtrl: NavController,
+    private barcodeScanner: BarcodeScanner
+  ) {}
 
-  constructor(public navCtrl: NavController) {
-
+  onClick() {
+    this.barcodeScanner
+      .scan()
+      .then(barcodeData => {
+        console.log("Barcode data", barcodeData);
+        this.barcodedata=barcodeData;
+      })
+      .catch(err => {
+        console.log("Error", err);
+      });
   }
-
 }
