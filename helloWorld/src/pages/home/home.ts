@@ -18,7 +18,7 @@ export class HomePage {
       .scan()
       .then(barcodeData => {
         console.log("Barcode data", barcodeData);
-        this.barcodedata=barcodeData;
+        this.barcodedata=barcodeData.text;
       })
       .catch(err => {
         console.log("Error", err);
